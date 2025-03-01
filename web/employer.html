@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employer Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: white;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        header {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            font-size: 24px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            color: #f1c40f;
+        }
+        main {
+            margin-top: 50px;
+            padding: 20px;
+        }
+        .verification-container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        input {
+            width: 250px;
+        }
+        button {
+            background: #f1c40f;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #d4ac0d;
+        }
+        #verificationResult {
+            font-size: 18px;
+            margin-top: 15px;
+            font-weight: bold;
+            animation: fadeIn 1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Employer Verification Portal</h1>
+        <nav><a href="index.html">Home</a></nav>
+    </header>
+    <main>
+        <div class="verification-container">
+            <h2>Verify Certificate</h2>
+            <input type="text" placeholder="Enter Certificate ID" id="certificateInput">
+            <button onclick="simulateVerification()">Verify</button>
+            <p id="verificationResult"></p>
+        </div>
+    </main>
+    <script>
+        function simulateVerification() {
+            document.getElementById("verificationResult").innerText = "Certificate Verified!";
+        }
+    </script>
+</body>
+</html>

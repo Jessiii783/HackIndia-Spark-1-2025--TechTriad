@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Certificate Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            color: white;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        header {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            font-size: 24px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            color: #f1c40f;
+        }
+        main {
+            margin-top: 50px;
+            padding: 20px;
+        }
+        .upload-container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 0 auto;
+            width: 60%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        input[type="file"] {
+            margin-bottom: 20px;
+        }
+        button {
+            background: #f1c40f;
+            border: none;
+            padding: 15px 25px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+            border-radius: 5px;
+        }
+        button:hover {
+            transform: scale(1.1);
+            background: #e67e22;
+        }
+        .response {
+            margin-top: 20px;
+            color: #2c3e50;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        AI-Powered Certificate Verification
+        <nav>
+            <a href="user-dashboard.html">User Dashboard</a>
+            <a href="institution.html">Institution</a>
+            <a href="employer.html">Employer</a>
+            <a href="admin.html">Admin</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Verify Certificates with AI</h2>
+        <p>Upload certificates, verify authenticity, and prevent fraud using AI technology.</p>
+        
+        <!-- Certificate upload form -->
+        <div class="upload-container">
+            <input type="file" id="certificate-file" accept="image/*">
+            <button onclick="verifyCertificate()">Verify Now</button>
+        </div>
+
+        <!-- Response section -->
+        <div class="response" id="response-message"></div>
+    </main>
+
+    <script>
+        // Function to handle the certificate verification
+        function verifyCertificate() {
+            var fileInput = document.getElementById('certificate-file');
+            var file = fileInput.files[0];
+
+            // Check if a file was selected
+            if (!file) {
+                document.getElementById('response-message').innerText = 'Please upload a certificate file.';
+                return;
+            }
+
+            var formData = new FormData();
+            formData.append("file", file);
+
+            // Send file to Flask backend for verification
+            fetch('http://127.0.0.1:5000/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Display response from the server (e.g., certificate verification status)
+                if (data.error) {
+                    document.getElementById('response-message').innerText = `Error: ${data.error}`;
+                } else {
+                    document.getElementById('response-message').innerHTML = `
+                        <strong>Certificate Verified!</strong><br>
+                        Certificate ID: ${data.certificate_id}<br>
+                        Student Name: ${data.student_name}<br>
+                        Issue Date: ${data.issue_date}<br>
+                        Verified: ${data.verified ? 'Yes' : 'No'}<br>
+                        <a href="${data.image_url}" target="_blank">View Certificate</a>
+                    `;
+                }
+            })
+            .catch(error => {
+                document.getElementById('response-message').innerText = 'An error occurred. Please try again later.';
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard & Employer Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: white;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        header {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            font-size: 24px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            color: #f1c40f;
+        }
+        main {
+            margin-top: 50px;
+            padding: 20px;
+        }
+        table {
+            width: 60%;
+            margin: auto;
+            border-collapse: collapse;
+            background: white;
+            color: black;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        th {
+            background: #f1c40f;
+            color: black;
+        }
+        tr:hover {
+            background: #e0e0e0;
+            transition: 0.3s;
+        }
+        .verification-container {
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            display: inline-block;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        input {
+            width: 250px;
+        }
+        button {
+            background: #f1c40f;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #d4ac0d;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard & Employer Verification Portal</h1>
+        <nav><a href="index.html">Home</a></nav>
+    </header>
+    <main>
+        <h2>Verification Activity</h2>
+        <table>
+            <tr>
+                <th>Certificate ID</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>12345</td>
+                <td>Verified</td>
+            </tr>
+        </table>
+        
+        <div class="verification-container">
+            <h2>Employer Verification Portal</h2>
+            <input type="text" placeholder="Enter Certificate ID" id="certificateInput">
+            <button onclick="simulateVerification()">Verify</button>
+            <p id="verificationResult"></p>
+        </div>
+    </main>
+
+    <script>
+        function simulateVerification() {
+            document.getElementById("verificationResult").innerText = "Certificate Verified!";
+        }
+    </script>
+</body>
+</html>
