@@ -1,4 +1,4 @@
-# AI-Integrated Certificate Verification System
+# CredX: Unlocking the Future of Credential Management
 
 ## Overview
 The AI-Integrated Certificate Verification System automates credential authentication using OCR, NLP, and fraud detection, ensuring secure and instant validation via QR codes. Built with React, Flask, and Firebase, it offers a user-friendly interface for students, institutions, and employers. The system enhances security by preventing certificate fraud, reducing manual verification efforts, and enabling real-time validation.
